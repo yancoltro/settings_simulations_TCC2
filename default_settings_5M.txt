@@ -1,0 +1,60 @@
+Scenario.name = [working_day-Speed-5MET-MaxPropRouter; working_day-Speed-5MET-EpidemicRouter; working_day-Speed-5MET-ProphetRouter; working_day-Speed-5MET-SprayAndWaitRouter]
+Group.router = [EpidemicRouter;ProphetRouter;SprayAndWaitRouter]
+ProphetRouter.secondsInTimeUnit = 30
+SprayAndWaitRouter.nrofCopies = 6
+SprayAndWaitRouter.binaryMode = true
+#---------------------------------------------------
+Scenario.endTime = 172800
+Scenario.simulateConnections = true
+Scenario.updateInterval = 1
+Scenario.nrofHostGroups = 1
+#---------------------------------------------------
+btInterface.type = SimpleBroadcastInterface
+btInterface.transmitSpeed = 1M
+btInterface.transmitRange = 5
+#---------------------------------------------------
+MovementModel.worldSize = 4500,3400
+#---------------------------------------------------
+Group.movementModel = WorkingDayMovement
+Group.busControlSystemNr = 120
+Group.workDayLength = 28800
+Group.nrOfOffices = 7
+Group.officeSize = 70
+Group.officeWaitTimeParetoCoeff = 10
+Group.officeMinWaitTime = 3600
+Group.officeMaxWaitTime = 7200
+Group.timeDiffSTD = 100
+Group.nrOfMeetingSpots = 6
+Group.minGroupSize = 50
+Group.maxGroupSize = 70
+Group.shoppingControlSystemNr = 5
+Group.maxAfterShoppingStopTime = 3600
+Group.minAfterShoppingStopTime = 1800
+Group.ownCarProb = 50
+Group.probGoShoppingAfterWork = 50
+Group.bufferSize = 50M
+Group.waitTime = 0,120
+Group.nrofInterfaces = 1
+Group.interface1 = btInterface
+Group.speed = 0.5,1.5
+Group.msgTtl = 50
+Group.nrofHosts = 120
+Group.groupID = trabalhadores
+#---------------------------------------------------
+Events.nrof = 1
+Events1.class = MessageEventGenerator
+Events1.interval = 10,12
+Events1.size = 3M
+Events1.hosts = 0,120
+Events1.prefix = Msg
+#---------------------------------------------------
+MapBasedMovement.nrofMapFiles = 4
+MapBasedMovement.mapFile1 = data/roads.wkt
+MapBasedMovement.mapFile2 = data/main_roads.wkt
+MapBasedMovement.mapFile3 = data/pedestrian_paths.wkt
+MapBasedMovement.mapFile4 = data/shops.wkt
+#---------------------------------------------------
+Report.nrofReports = 1
+Report.warmup = 0
+Report.reportDir = reports/
+Report.report1 = MessageStatsReport
